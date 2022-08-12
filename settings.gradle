@@ -8,6 +8,10 @@ pluginManagement {
         maven {
             url "https://jitpack.io"
         }
+
+        flatDir {
+            dirs 'libs' //this way we can find the .aar file in libs folder
+        }
     }
 }
 dependencyResolutionManagement {
@@ -20,6 +24,10 @@ dependencyResolutionManagement {
         }
         maven{ allowInsecureProtocol true
             url 'https://maven.aliyun.com/repository/public/'}
+
+        flatDir {
+            dirs 'libs' //this way we can find the .aar file in libs folder
+        }
     }
 }
 rootProject.name = "DependentLibraries"
