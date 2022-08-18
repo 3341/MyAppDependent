@@ -76,8 +76,7 @@ public class BottomDialogUtil extends BottomPopupView {
         });
     }
 
-    @Override
-    public BasePopupView show() {
+    public BasePopupView showByTool() {
         return new XPopup.Builder(getContext()).asCustom(this).show();
     }
 }
