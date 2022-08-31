@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 
 public class ExceptionUtil {
-    public static String getExceptionTraceContent(Exception e) throws IOException {
+    public static String getExceptionTraceContent(Exception e) {
         ByteArrayOutputStream bo = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(bo);
         e.printStackTrace(printStream);
