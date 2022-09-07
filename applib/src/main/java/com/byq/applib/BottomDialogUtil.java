@@ -21,10 +21,12 @@ public class BottomDialogUtil extends BottomPopupView {
     private View contentView;
 
     //Views
+    private LinearLayout mDialogBg;
     private TextView mTitleView;
     private TextView mSubTitle;
     private LinearLayout mContentView;
     private MaterialButton mCloseButton;
+
 
 //This constructor will cause crash
 //    public BottomDialogUtil(@NonNull Context context,View contentView) {
@@ -67,6 +69,10 @@ public class BottomDialogUtil extends BottomPopupView {
         return mCloseButton;
     }
 
+    public LinearLayout getmDialogBg() {
+        return mDialogBg;
+    }
+
     public int getContentViewImplId() {
         return -1;
     }
@@ -80,10 +86,12 @@ public class BottomDialogUtil extends BottomPopupView {
     protected void onCreate() {
         super.onCreate();
 
+        mDialogBg = findViewById(R.id.dialogBg);
         mTitleView = findViewById(R.id.titleView);
         mSubTitle = findViewById(R.id.subTitle);
         mContentView = findViewById(R.id.contentView);
         mCloseButton = findViewById(R.id.closeButton);
+
 
         mCloseButton.setOnClickListener(new OnClickListener() {
             @Override
