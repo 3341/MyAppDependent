@@ -1,7 +1,9 @@
 package com.byq.applib;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -32,8 +34,23 @@ public class BottomDialogUtil extends BottomPopupView {
 
     public BottomDialogUtil(@NonNull Context context) {
         super(context);
+        int layoutId = getContentViewImplId();
+        if (layoutId != -1) {
+            View view = inflateLayout(layoutId, getmContentView());
+            addToContentView(view);
+        }
     }
 
+    public View inflateLayout(int layoutId, ViewGroup parent) {
+        return LayoutInflater.from(getContext())
+                .inflate(layoutId,parent,false);
+    }
+
+    public void addToContentView(View targetView) {
+        getmContentView().addView(targetView);
+    }
+
+    @Deprecated(since = "This method is easy to cause ambiguity, it is recommended to use addToContentView")
     public void setContentView(View contentView) {
         this.contentView = contentView;
     }
@@ -52,6 +69,10 @@ public class BottomDialogUtil extends BottomPopupView {
 
     public MaterialButton getmCloseButton() {
         return mCloseButton;
+    }
+
+    public int getContentViewImplId() {
+        return -1;
     }
 
     @Override
