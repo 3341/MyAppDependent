@@ -26,19 +26,15 @@ public class BottomDialogUtil extends BottomPopupView {
     private LinearLayout mContentView;
     private MaterialButton mCloseButton;
 
-
-    public BottomDialogUtil(@NonNull Context context,View contentView) {
-        super(context);
-        setContentView(contentView);
-    }
+//This constructor will cause crash
+//    public BottomDialogUtil(@NonNull Context context,View contentView) {
+//        super(context);
+//        setContentView(contentView);
+//    }
 
     public BottomDialogUtil(@NonNull Context context) {
         super(context);
-        int layoutId = getContentViewImplId();
-        if (layoutId != -1) {
-            View view = inflateLayout(layoutId, getmContentView());
-            addToContentView(view);
-        }
+        //Manipulating the View here is prohibited, it will cause a crash
     }
 
     public View inflateLayout(int layoutId, ViewGroup parent) {
@@ -95,6 +91,12 @@ public class BottomDialogUtil extends BottomPopupView {
                 dismiss();
             }
         });
+
+        int layoutId = getContentViewImplId();
+        if (layoutId != -1) {
+            View view = inflateLayout(layoutId, getmContentView());
+            addToContentView(view);
+        }
     }
 
     public BasePopupView showByTool() {
